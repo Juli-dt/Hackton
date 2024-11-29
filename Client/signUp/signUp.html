@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signUp.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <header> <img src="../assets/Logo.png" alt=""> <h1>Donaciones carita feliz</h1> </header>
+    </div>
+    <nav>
+      <span><a href="../Home/home.html"></a><strong>Página principal</strong> </span>
+      <span><a href="../foundations/foundations.html"></a><strong>Fundaciones</strong> </span>
+      <span><a href="../Log in/login.html"> <strong>Iniciar sesión</strong></a> </span>
+    </nav>
+    <main>
+      <div>
+        <label>
+          <input type="radio" name="formSelector" value="form1" checked> Fundaciones
+        </label>
+        <label>
+          <input type="radio" name="formSelector" value="form2"> Donadores
+        </label>
+      </div>
+      <form class="forms" id="formFoundations">
+        <!-- Contenido del Formulario 1 -->
+        <h2>Formulario fundaciones</h2>
+        <input type="text" placeholder="Nombre">
+        <input type="submit" value="Enviar">
+      </form>
+
+      <form class="forms" id="formDonors" style="display: none;">
+        <!-- Contenido del Formulario 2 -->
+        <h2>Formulario donadores</h2>
+        <input type="email" placeholder="Correo Electrónico">
+        <input type="submit" value="Enviar">
+      </form>
+    </main>
+    <script src="signUp.js"></script>    
+  </body>
+</html>
