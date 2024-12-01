@@ -16,15 +16,21 @@ const Admin = sequelize.define('Admin', {
         type: DataTypes.ENUM('Passport', 'National ID', 'Driver License'),
         allowNull: false
     },
+    idNumber: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        allowNull: false
+    },
     email: {
         type:DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             isEmail: true
         }
     },
     phone: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false
     },
     password: {

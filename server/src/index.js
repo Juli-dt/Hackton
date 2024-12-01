@@ -25,6 +25,7 @@ app.use(donationRoutes);
 app.use(foundationRoutes);
 app.use(adminRoutes);
 
+
 const startServer = async () => {
     try {
         await sequelize.authenticate();

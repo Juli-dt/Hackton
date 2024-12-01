@@ -1,21 +1,37 @@
-import Admin from '../models/admin.js';
+import Admin from '../models/admins.js';
 import { Op } from 'sequelize'
 
 
 export const searchAdminsByName = async (req, res) =>{
     try {
-    const { name } = req.query
-    const foundations = await Admin.findAll({
-        where: {
-            name: {
-                [Op.like]: `%&{name}%`
+        const { name } = req.query
+        const foundations = await Admin.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%&{name}%`
+                }
             }
-        }
-    })
+        })
     res.status(200).json(foundations)
 } catch (error) {
     res.status(500).json({error: error.message})
 }
+}
+export const searchAdminsByEmail = async (req, res) =>{
+    try {
+        const admin = await Admin.findOne({
+            where: {
+                email: req.body.email
+            }
+        });
+        if (admin) {
+            return admin;
+        } else {
+            res.status(404).json({ error: 'Admin not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 }
 // Crear un nuevo Admin
 export const createAdmin = async (req, res) => {

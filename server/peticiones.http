@@ -1,0 +1,24 @@
+###obtener todos los productos
+GET http://localhost:62299/admins
+
+###Create an admin
+POST http://localhost:62299/admins
+Content-Type: application/json
+
+{
+  "name":"Carlos Andres Noreña Vargas",
+  "email":"carlos1997704@gmail.com",
+  "password":"123456",
+  "idType":"National ID",
+  "idNumber":"1000897044",
+  "phone":"3000000000"
+}
+
+###Login
+POST http://localhost:62299/login
+Content-Type: application/json
+
+{
+  "email":"carlos1997704@gmail.com",
+  "password":"123456"
+}
