@@ -68,7 +68,7 @@ nav a strong {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -86,11 +86,13 @@ nav a strong {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .history {
     height: 100%;
     width: 90%;
@@ -101,11 +103,13 @@ main {
     gap: 12px;
     padding: 10px;
 }
+
 .history_nav {
-    background-color:#f5f7fa;
+    background-color: #f5f7fa;
     display: flex;
     justify-content: flex-start;
 }
+
 .history_nav span {
     background-color: #55555543;
     width: 9%;
@@ -120,10 +124,47 @@ main {
     cursor: pointer;
     color: #333333;
 }
+
 .cards {
     display: flex;
     flex-direction: row;
 }
+
+.card__actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Estilos de los botones */
+.card__button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.card__button--approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.card__button--approve:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+}
+
+.card__button--disapprove {
+    background-color: #dc3545;
+    color: white;
+}
+
+.card__button--disapprove:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
 .filters {
     width: 100%;
     display: flex;
@@ -134,8 +175,9 @@ main {
 
 .filters input {
     border-radius: 5px;
-    border:1px solid #555
+    border: 1px solid #555
 }
+
 .fundaciones_principales {
     display: flex;
     flex-wrap: wrap;
@@ -170,6 +212,6 @@ main {
 }
 
 .fundacion .description {
-    font-size: 14px;
+    font-size: 10px;
     color: #555;
 }
