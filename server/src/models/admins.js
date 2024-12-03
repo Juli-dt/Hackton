@@ -18,13 +18,13 @@ const Admin = sequelize.define('Admin', {
     },
     idNumber: {
         type: DataTypes.INTEGER,
-        unique: true,
+        //unique: true,
         allowNull: false
     },
     email: {
         type:DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        //unique: true,
         validate: {
             isEmail: true
         }

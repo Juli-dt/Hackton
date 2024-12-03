@@ -3,18 +3,35 @@ import { Op } from 'sequelize'
 
 export const searchFoundationsByName = async (req, res) =>{
     try {
-    const { name } = req.query
-    const foundations = await Foundation.findAll({
-        where: {
-            name: {
-                [Op.like]: `%&{name}%`
+        const { name } = req.query
+        const foundations = await Foundation.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%&{name}%`
+                }
             }
-        }
-    })
-    res.status(200).json(foundations)
-} catch (error) {
-    res.status(500).json({error: error.message})
+        })
+        res.status(200).json(foundations)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
 }
+
+export const searchFoundationByEmail = async (req, res) =>{
+    try {
+        const foundation = await Foundation.findOne({
+            where: {
+                email: req.body.email
+            }
+        });
+        if (foundation) {
+            return foundation;
+        } else {
+            return {error: 'foundation not found'};
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 }
 export const createFoundation = async (req, res) => {
     try {

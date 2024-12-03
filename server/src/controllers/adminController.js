@@ -27,7 +27,7 @@ export const searchAdminsByEmail = async (req, res) =>{
         if (admin) {
             return admin;
         } else {
-            res.status(404).json({ error: 'Admin not found' });
+            return{ error: 'Admin not found' };
         }
     } catch (error) {
         res.status(500).json({ error: error.message });

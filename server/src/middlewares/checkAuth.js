@@ -8,6 +8,10 @@ const SECRET_KEY = process.env.SECRET_KEY
 export const checkAuth = (req, res, next) => {
   const token = req.cookies.token;
   console.log(token);
+  console.log(req.cookie);
+  console.log(req.cookies);
+  console.log(req.headers);
+  console.log(req.headers.cookie);
 
   if (!token) {
     return res.status(401).json({ message: 'No autorizado' });
@@ -18,7 +22,8 @@ export const checkAuth = (req, res, next) => {
       console.error(err);
       return res.status(401).json({ message: 'No autorizado' });
     }
-
+    
+    res.json({});
     req.user = decoded;
     next();
   });

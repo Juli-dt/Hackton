@@ -1,14 +1,3 @@
-// const server = require("./db/app.js");
-// const { conn } = require("./db/db.js");
-
-// const { DB_PORT } = process.env;
-
-// conn.sync({ force: false }).then(() => {
-//     server.listen(DB_PORT, () => {
-//         console.log(`Server is listening on port: ${DB_PORT}`);
-//     });
-// });
-
 import express, { json } from 'express';
 import sequelize  from './db/db.js';
 import donorRoutes from './routes/donorRoutes.js';

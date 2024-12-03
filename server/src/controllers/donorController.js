@@ -3,19 +3,37 @@ import { Op } from 'sequelize'
 
 export const searchDonorsByName = async (req, res) =>{
     try {
-    const { name } = req.query
-    const foundations = await Donor.findAll({
-        where: {
-            name: {
-                [Op.like]: `%&{name}%`
+        const { name } = req.query
+        const foundations = await Donor.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%&{name}%`
+                }
             }
+        })
+        res.status(200).json(foundations)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
+
+export const searchDonorByEmail = async (req, res) =>{
+    try {
+        const donor = await Donor.findOne({
+            where: {
+                email: req.body.email
+            }
+        });
+        if (donor) {
+            return donor;
+        } else {
+            return {error: 'donor not found'};
         }
-    })
-    res.status(200).json(foundations)
-} catch (error) {
-    res.status(500).json({error: error.message})
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 }
-}
+
 export const createDonor = async (req, res) => {
     try {
         const newDonor = await Donor.create(req.body);

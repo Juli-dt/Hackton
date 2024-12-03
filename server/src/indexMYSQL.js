@@ -7,15 +7,31 @@ import foundationRoutes from './routes/foundationRoutes.js';
 import adminRoutes from './routes/adminRouter.js'
 import login from './routes/loginRouter.js';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
+import cors from 'cors';
 import './models/index.js'; 
 
 dotenv.config();
+const acceptedOrigins = process.env.ACCEPTED_ORIGINS;
+//console.log(acceptedOrigins.split(','));
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(cookieParser());
 app.disable('x-powered-by');
 app.use(json());
-app.use(cookieParser());
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin || acceptedOrigins.split(',').includes(origin)){
+      callback(null, true);
+    }
+    else{
+      callback(new Error('Not allowed by CORS'));
+    }
+  }, credentials: true,
+}));
+
+app.use(morgan('dev'));
 app.use(donorRoutes);
 app.use(donationRoutes);
 app.use(foundationRoutes);

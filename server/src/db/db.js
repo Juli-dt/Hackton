@@ -12,8 +12,6 @@ const config = {
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
 };
-console.log(config);
-console.log(databaseType);
 const sequelize = new Sequelize(config.database, config.user, config.password, {
   port: config.port,
   host: config.host,
