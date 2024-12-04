@@ -14,7 +14,7 @@ router.use(cookieParser());
 const SECRET_KEY = process.env.SECRET_KEY || 'your_secret_key'; // Cambia esto por una clave secreta segura
 
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, type} = req.body;
 
   try {
     // Buscar el usuario por email
@@ -55,7 +55,18 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: user.id, email: user.email, userType}, SECRET_KEY, { expiresIn: '1h' });
 
     // Configurar la cookie con el token
-    res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 3600000 });
+    res.cookie('token', token, { 
+      httpOnly: false, 
+      secure: false, 
+      sameSite:'None', 
+      maxAge: 3600000 
+    });
+    res.cookie('userType', userType, { 
+      //httpOnly: false, 
+      secure: false, 
+      sameSite:'None', 
+      maxAge: 3600000 
+    });
 
     return res.json({message: 'Inicio de sesión exitoso', userType});
   } catch (error) {

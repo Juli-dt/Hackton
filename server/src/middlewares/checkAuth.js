@@ -7,9 +7,7 @@ const SECRET_KEY = process.env.SECRET_KEY
 
 export const checkAuth = (req, res, next) => {
   const token = req.cookies.token;
-  console.log(token);
-  console.log(req.cookie);
-  console.log(req.cookies);
+  console.log(token+" token");
   console.log(req.headers);
   console.log(req.headers.cookie);
 

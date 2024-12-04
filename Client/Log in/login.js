@@ -7,11 +7,12 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
   try {
     const response = await fetch('http://localhost:62299/login', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, password }),
-      credentials: 'include'
+      body: JSON.stringify({ email, password })
+      
     });
 
     if (!response.ok) {
